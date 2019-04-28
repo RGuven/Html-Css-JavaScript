@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <canvas id="tuval" width="640" height="480" style="border:3px solid">
+        </canvas>
+        <script>
+        var tuval=document.getElementById("tuval");
+        var cizim=tuval.getContext("2d");
+
+        var en=tuval.width;
+        var boy=tuval.height;
+        var x=en/2;
+        var y=boy/2;
+        var dx=5;
+        var dy=5;
+
+        function temizle(){
+            cizim.beginPath();
+            cizim.fillStyle="#ffff00";
+            cizim.fillRect(0,0,en,boy);
+            cizim.closePath();
+            cizim.fill();
+            
+
+        }
+
+        function zipla(){
+            temizle();
+            cizim.beginPath();
+            cizim.arc(x,y,10,0,2*Math.PI);
+            cizim.closePath();
+            cizim.fillStyle="#0000ff";
+            cizim.fill();
+            x=x+dx;
+            y=y+dy;
+            if (x>en||x<0)
+                dx=-1 * dx;                
+            if (y>boy||y<0)
+                dy=-1 * dy;    
+            cizim.fillText("Ramazan Güven",500,450);
+            
+            
+        }
+        
+        setInterval(zipla,1);
+        </script>
+        
+
+
+    </body>
+
+
+
+
+</html>
